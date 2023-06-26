@@ -1,0 +1,22 @@
+{
+  "name": "battleships",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hchdhry/battleships.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hchdhry/battleships/issues"
+  },
+  "homepage": "https://github.com/hchdhry/battleships#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
