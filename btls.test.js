@@ -1,5 +1,12 @@
-const add = require('./btls');
+const Ship = require('./btls');
 
-test('check test', () => {
-  expect(add(3, 4)).toBe(7);
+let yee;
+
+beforeEach(() => {
+  yee = new Ship(3, 3, false); // Assign a new instance to the outer yee variable
+});
+
+test('hit function decrease health', () => {
+  yee.hit(1);
+  expect(yee.health).toBe(2);
 });
