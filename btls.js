@@ -1,15 +1,21 @@
-function createShip(length, health, sunk) {
-    const ship = {
-      length,
-      health,
-      sunk,
-      hit: function(num) {
-        this.health -= num;
-      }
-    };
+class Ship {
+    constructor(damage, length, sunk) {
+      this.damage = 0;
+      this.length = length;
+      this.sunk = sunk;
+    }
   
-    return ship;
+    hit(x) {
+      this.damage += x;
+      this.issunk();
+    }
+  
+    issunk() {
+      if (this.damage >= this.length) {
+        this.sunk = true;
+      }
+    }
   }
   
-  module.exports = createShip;
+  module.exports = Ship;
   
