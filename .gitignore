@@ -1,0 +1,11 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore a specific file
+config.json
+
+# Ignore all files in a specific directory
+src/assets/
