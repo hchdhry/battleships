@@ -6,6 +6,7 @@ class GameBoard {
     this.numrows = numrows;
     this.numcolumns = numcolumns;
   }
+  missedshots=[]
 
   createGameBoard() {
     for (let i = 1; i <= this.numrows; i++) {
@@ -24,7 +25,14 @@ class GameBoard {
   }
 
   receiveAttack(x, y) {
-    this.board[x].splice(y, 1, "x");
+    if(this.board[x][y]===" "){
+    this.board[x].splice(y, 1, "l");
+this.missedshots.push([x,y])
+    }
+    else if (this.board[x][y]==="s") {
+      this.board[x].splice(y, 1, "w");
+  }
+ 
   }
 }
 

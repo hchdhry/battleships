@@ -51,12 +51,12 @@ describe('Game Board', () => {
 
   test("receives correct coordinates", () => {
     wee.receiveAttack(6, 6);
-    expect(wee.board[6][6]).toBe("x");
+    expect(wee.board[6][6]).toBe("l");
   });
 
   test("receives correct coordinates", () => {
     wee.receiveAttack(5, 8);
-    expect(wee.board[5][8]).toBe("x");
+    expect(wee.board[5][8]).toBe("l");
   });
 
   test("places ship at correct location", () => {
@@ -69,4 +69,16 @@ describe('Game Board', () => {
       expect(wee.board[5][8]).toBe("s");
       expect(wee.board[5][9]).toBe("s");
   });
+  test("keep track of missed shots",()=>{
+    wee.receiveAttack(5,8)
+    expect(wee.missedshots[0]).toEqual([5,8])
+  })
+  test("keep track of missed shots",()=>{
+    wee.receiveAttack(5,8)
+    wee.receiveAttack(3,4)
+    wee.receiveAttack(2,9)
+    expect(wee.missedshots[0]).toEqual([5,8])
+    expect(wee.missedshots[1]).toEqual([3,4])
+    expect(wee.missedshots[2]).toEqual([2,9])
+  })
 });
