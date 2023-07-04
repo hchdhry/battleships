@@ -7,7 +7,6 @@ class GameBoard {
     this.numcolumns = numcolumns;
   }
 
-
   createGameBoard() {
     for (let i = 1; i <= this.numrows; i++) {
       const rows = [];
@@ -17,6 +16,16 @@ class GameBoard {
       this.board.push(rows);
     }
   }
+
+  placeship(ship, x, y) {
+    for (let i = 0; i < ship.length; i++) {
+      this.board[x].splice(y+i, 1, "s");
+    }
+  }
+
+  receiveAttack(x, y) {
+    this.board[x].splice(y, 1, "x");
+  }
 }
 
-module.exports= GameBoard;
+module.exports = GameBoard;

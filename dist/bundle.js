@@ -25,7 +25,7 @@ eval("class Ship {\n    constructor(length) {\n      this.damage = 0;\n      thi
   \**************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n\nclass GameBoard {\n  constructor(numrows, numcolumns) {\n    this.board = [];\n    this.numrows = numrows;\n    this.numcolumns = numcolumns;\n  }\n\n\n  createGameBoard() {\n    for (let i = 0; i <= this.numrows; i++) {\n      const rows = [];\n      for (let j = 0; j <= this.numcolumns; j++) {\n        rows.push(\" \");\n      }\n      this.board.push(rows);\n    }\n  }\n}\n\nmodule.exports= GameBoard;\n\n\n//# sourceURL=webpack://battleships/./src/gameboard.js?");
+eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n\nclass GameBoard {\n  constructor(numrows, numcolumns) {\n    this.board = [];\n    this.numrows = numrows;\n    this.numcolumns = numcolumns;\n  }\n\n  createGameBoard() {\n    for (let i = 1; i <= this.numrows; i++) {\n      const rows = [];\n      for (let j = 1; j <= this.numcolumns; j++) {\n        rows.push(\" \");\n      }\n      this.board.push(rows);\n    }\n  }\n\n  placeship(ship, x, y) {\n    for (let i = 0; i < ship.length; i++) {\n      this.board[x].splice(y, 1, \"s\");\n    }\n  }\n\n  receiveAttack(x, y) {\n    this.board[x].splice(y, 1, \"x\");\n  }\n}\n\nmodule.exports = GameBoard;\n\n\n//# sourceURL=webpack://battleships/./src/gameboard.js?");
 
 /***/ }),
 
@@ -36,7 +36,7 @@ eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n\nclas
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _btls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n/* harmony import */ var _btls__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_btls__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameboard */ \"./src/gameboard.js\");\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_gameboard__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst wee = new (_gameboard__WEBPACK_IMPORTED_MODULE_1___default())(10, 10);\nconsole.log(wee.gameboard);\n\n\n//# sourceURL=webpack://battleships/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _btls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n/* harmony import */ var _btls__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_btls__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameboard */ \"./src/gameboard.js\");\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_gameboard__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst wee = new (_gameboard__WEBPACK_IMPORTED_MODULE_1___default())(10, 10);\nwee.createGameBoard()\nconsole.log(wee.board);\n\n\n//# sourceURL=webpack://battleships/./src/index.js?");
 
 /***/ })
 
