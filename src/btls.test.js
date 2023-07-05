@@ -104,4 +104,8 @@ describe("test player functionality", () => {
     expect(board2.board[9][9]).toEqual("l");
     expect(board1.board[9][9]).toBe(" ")
   });
+  test("ai makes legal moves",()=>{
+    board1.receiveAttack(9,8)
+
+  })
 });
