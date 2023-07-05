@@ -1,5 +1,6 @@
 const Ship = require('./btls');
 const GameBoard = require('./gameboard');
+const player = require('./player')
 
 describe("test ship", () => {
   let yee;
@@ -81,4 +82,26 @@ describe('Game Board', () => {
     expect(wee.missedshots[1]).toEqual([3,4])
     expect(wee.missedshots[2]).toEqual([2,9])
   })
+});
+
+describe("test player functionality", () => {
+  beforeEach(() => {
+    playerone = new player("hassan");
+    playertwo = new player("AI")
+    board1 = new GameBoard(10, 10);
+    board2 = new GameBoard(10, 10);
+    board1.createGameBoard()
+    board2.createGameBoard()
+  });
+
+  test("correct player takes turn", () => {
+    playerone.taketurn(board1, 5, 6);
+    expect(board1.board[5][6]).toEqual("l");
+    expect(board2.board[5][6]).toBe(" ")
+  });
+  test("correct player takes turn", () => {
+    playertwo.taketurn(board2, 9, 9);
+    expect(board2.board[9][9]).toEqual("l");
+    expect(board1.board[9][9]).toBe(" ")
+  });
 });
