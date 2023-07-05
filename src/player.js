@@ -11,10 +11,16 @@ gameboard.receiveAttack(x,y)
     }
 
     robot(gameboard){
+        
         const rx = Math.floor(Math.random() * 10);
         const ry = Math.floor(Math.random() * 10);
-        this.taketurn(gameboard,rx,ry)
-
+        const comp =[rx,ry]
+        if(gameboard.missedshots.includes(comp)){
+        this.robot(gameboard)
+        }
+        else {
+            this.taketurn(gameboard,rx,ry)
+        }
 
     }
 }
