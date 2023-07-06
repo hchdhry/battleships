@@ -9,21 +9,17 @@ class player{
     taketurn(gameboard,x,y){
 gameboard.receiveAttack(x,y)
     }
-
-    robot(gameboard){
-        
-        const rx = Math.floor(Math.random() * 10);
-        const ry = Math.floor(Math.random() * 10);
-        const comp =[rx,ry]
-        if(gameboard.missedshots.includes(comp)){
-        this.robot(gameboard)
-        }
-        else {
-            this.taketurn(gameboard,rx,ry)
-        }
-
-    }
-}
+    
+    robot(gameboard) {
+        let rx, ry;
+        do {
+          rx = Math.floor(Math.random() * 10);
+          ry = Math.floor(Math.random() * 10);
+        } while (gameboard.missedshots.some(([x, y]) => x === rx && y === ry));
+      
+        this.taketurn(gameboard, rx, ry);
+      }}
+      
 
 
 module.exports = player;

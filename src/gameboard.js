@@ -32,8 +32,8 @@ this.missedshots.push([x,y])
     else if (this.board[x][y]==="s") {
       this.board[x].splice(y, 1, "w");
   }
- 
-  }
+
+}
 }
 
 module.exports = GameBoard;

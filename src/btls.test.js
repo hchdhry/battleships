@@ -85,7 +85,9 @@ describe('Game Board', () => {
 });
 
 describe("test player functionality", () => {
+
   beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValueOnce(0.2).mockReturnValueOnce(0.7);
     playerone = new player("hassan");
     playertwo = new player("AI")
     board1 = new GameBoard(10, 10);
@@ -105,7 +107,9 @@ describe("test player functionality", () => {
     expect(board1.board[9][9]).toBe(" ")
   });
   test("ai makes legal moves",()=>{
-    board1.receiveAttack(9,8)
+    board1.receiveAttack(2,7)
+    playerone.robot(board1)
+    expect(board1.board[2][7]).toBe("l")
 
   })
 });
