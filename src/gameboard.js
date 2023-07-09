@@ -19,10 +19,23 @@ class GameBoard {
   }
 
   placeship(ship, x, y) {
-    for (let i = 0; i < ship.length; i++) {
-      this.board[x].splice(y+i, 1, "s");
+    const shipLength = ship.length;
+  
+    if (y + shipLength > this.numcolumns || x >= this.numrows) {
+      throw new Error('Ship placement exceeds game board boundaries.');
+    }
+  
+    for (let i = 0; i < shipLength; i++) {
+      this.board[x][y + i] = 's';
     }
   }
+  
+  
+  
+
+  
+  
+  
 
   receiveAttack(x, y) {
     if(this.board[x][y]===" "){
