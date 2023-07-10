@@ -18,6 +18,7 @@ class GameBoard {
     }
   }
 
+
   placeship(ship, x, y) {
     const shipLength = ship.length;
   
@@ -46,6 +47,14 @@ this.missedshots.push([x,y])
       this.board[x].splice(y, 1, "w");
   }
 
+}
+allShipsSunk() {
+  for (let row of this.board) {
+    if (row.includes("s")) {
+      return false;
+    }
+  }
+  return true;
 }
 }
 

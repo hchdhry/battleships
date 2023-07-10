@@ -25,7 +25,7 @@ eval("class Ship {\n    constructor(length) {\n      this.damage = 0;\n      thi
   \**************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n\nclass GameBoard {\n  constructor(numrows, numcolumns) {\n    this.board = [];\n    this.numrows = numrows;\n    this.numcolumns = numcolumns;\n  }\n  missedshots=[]\n\n  createGameBoard() {\n    for (let i = 1; i <= this.numrows; i++) {\n      const rows = [];\n      for (let j = 1; j <= this.numcolumns; j++) {\n        rows.push(\" \");\n      }\n      this.board.push(rows);\n    }\n  }\n\n  placeship(ship, x, y) {\n    const shipLength = ship.length;\n  \n    if (y + shipLength > this.numcolumns || x >= this.numrows) {\n      throw new Error('Ship placement exceeds game board boundaries.');\n    }\n  \n    for (let i = 0; i < shipLength; i++) {\n      this.board[x][y + i] = 's';\n    }\n  }\n  \n  \n  \n\n  \n  \n  \n\n  receiveAttack(x, y) {\n    if(this.board[x][y]===\" \"){\n    this.board[x].splice(y, 1, \"l\");\nthis.missedshots.push([x,y])\n    }\n    else if (this.board[x][y]===\"s\") {\n      this.board[x].splice(y, 1, \"w\");\n  }\n\n}\n}\n\nmodule.exports = GameBoard;\n\n\n//# sourceURL=webpack://battleships/./src/gameboard.js?");
+eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n\nclass GameBoard {\n  constructor(numrows, numcolumns) {\n    this.board = [];\n    this.numrows = numrows;\n    this.numcolumns = numcolumns;\n  }\n  missedshots=[]\n\n  createGameBoard() {\n    for (let i = 1; i <= this.numrows; i++) {\n      const rows = [];\n      for (let j = 1; j <= this.numcolumns; j++) {\n        rows.push(\" \");\n      }\n      this.board.push(rows);\n    }\n  }\n\n\n  placeship(ship, x, y) {\n    const shipLength = ship.length;\n  \n    if (y + shipLength > this.numcolumns || x >= this.numrows) {\n      throw new Error('Ship placement exceeds game board boundaries.');\n    }\n  \n    for (let i = 0; i < shipLength; i++) {\n      this.board[x][y + i] = 's';\n    }\n  }\n  \n  \n  \n\n  \n  \n  \n\n  receiveAttack(x, y) {\n    if(this.board[x][y]===\" \"){\n    this.board[x].splice(y, 1, \"l\");\nthis.missedshots.push([x,y])\n    }\n    else if (this.board[x][y]===\"s\") {\n      this.board[x].splice(y, 1, \"w\");\n  }\n\n}\nallShipsSunk() {\n  for (let row of this.board) {\n    if (row.includes(\"s\")) {\n      return false;\n    }\n  }\n  return true;\n}\n}\n\nmodule.exports = GameBoard;\n\n\n//# sourceURL=webpack://battleships/./src/gameboard.js?");
 
 /***/ }),
 
@@ -33,10 +33,9 @@ eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n\nclas
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _btls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n/* harmony import */ var _btls__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_btls__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameboard */ \"./src/gameboard.js\");\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_gameboard__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./player */ \"./src/player.js\");\n/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_player__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nfunction gameloop(){\nconst p1= new (_player__WEBPACK_IMPORTED_MODULE_2___default())(\"yee\")\nconst bot = new (_player__WEBPACK_IMPORTED_MODULE_2___default()) (\"alien\")\nconst board1 = new (_gameboard__WEBPACK_IMPORTED_MODULE_1___default())(10,10)    \nboard1.createGameBoard()\nconst board2 = new (_gameboard__WEBPACK_IMPORTED_MODULE_1___default())(10,10) \nboard2.createGameBoard()\n\nconst carrier1 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(5);\nconst battleship1 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(4);\nconst cruiser1 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(3);\nconst submarine1 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(3);\nconst destroyer1 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(2);\n\nconst carrier2 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(5);\nconst battleship2 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(4);\nconst cruiser2 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(3);\nconst submarine2 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(3);\nconst destroyer2 = new (_btls__WEBPACK_IMPORTED_MODULE_0___default())(2);\n\nboard2.placeship(carrier2, 1, 1);\nboard2.placeship(battleship2, 9, 9);\nboard2.placeship(cruiser2, 3, 1);\nboard2.placeship(submarine2, 4, 1);\nboard2.placeship(destroyer2, 5, 1);\n\n\nconsole.log(board2)\n\n}\ngameloop()\n\n//# sourceURL=webpack://battleships/./src/index.js?");
+eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\nconst GameBoard = __webpack_require__(/*! ./gameboard */ \"./src/gameboard.js\");\nconst player = __webpack_require__(/*! ./player */ \"./src/player.js\");\n\nconst playerBoard = document.querySelector('.player-board');\nconst opponentBoard = document.querySelector('.opponent-board');\n\nfunction makegrid(gridElement) {\n  for (let i = 0; i < 10; i++) {\n    for (let j = 0; j < 10; j++) {\n      const cell = document.createElement('div');\n      cell.classList.add('cell');\n      gridElement.appendChild(cell);\n    }\n  }\n}\n\nmakegrid(playerBoard);\nmakegrid(opponentBoard);\n\n\nfunction gameloop() {\n  const p1 = new player(\"yee\");\n  const bot = new player(\"alien\");\n\n  const board1 = new GameBoard(10, 10);\n  board1.createGameBoard();\n\n  const board2 = new GameBoard(10, 10);\n  board2.createGameBoard();\n\n  const carrier1 = new Ship(5);\n  const battleship1 = new Ship(4);\n  const cruiser1 = new Ship(3);\n  const submarine1 = new Ship(3);\n  const destroyer1 = new Ship(2);\n\n  const carrier2 = new Ship(5);\n  const battleship2 = new Ship(4);\n  const cruiser2 = new Ship(3);\n  const submarine2 = new Ship(3);\n  const destroyer2 = new Ship(2);\n\n  board2.placeship(carrier2, 1, 1);\n  board2.placeship(battleship2, 2, 1);\n  board2.placeship(cruiser2, 3, 1);\n  board2.placeship(submarine2, 4, 1);\n  board2.placeship(destroyer2, 5, 1);\n\n  board1.placeship(carrier1, 0, 0);\n  board1.placeship(battleship1, 1, 2);\n  board1.placeship(cruiser1, 2, 4);\n  board1.placeship(submarine1, 3, 6);\n  board1.placeship(destroyer1, 4, 4);\n\n\n\n  console.log(board2)\n  console.log(board1)\n\n  let gameOver = false;\n  let currentPlayer = p1;\n\n  while (!gameOver) {\n    \n    currentPlayer.taketurn(board1,1,2);\n\n   \n    if (board1.allShipsSunk()) {\n      console.log(`${currentPlayer.name} wins!`);\n      gameOver = true;\n      break;\n    }\n\n    \n    currentPlayer = currentPlayer === p1 ? bot : p1;\n  }\n}\n\n\n\n\n//# sourceURL=webpack://battleships/./src/index.js?");
 
 /***/ }),
 
@@ -75,47 +74,6 @@ eval("const Ship = __webpack_require__(/*! ./btls */ \"./src/btls.js\");\n\nclas
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
 /******/ 	
 /************************************************************************/
 /******/ 	

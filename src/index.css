@@ -1,0 +1,51 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #05011f;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    text-transform: uppercase;
+  }
+  
+  .game-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #0d0430;
+    padding: 20px;
+    border-radius: 8px;
+    height: 50vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .gameboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+  }
+  
+  .player-board {
+    background-color: #140651;
+    width: 40%;
+  }
+  
+  .opponent-board {
+    background-color: #222268;
+    width: 40%;
+  }
+  
+  .cell {
+    background-color: #181b59;
+    border: 1px solid #000a3d;
+  }
+  
+  /* Additional styles for ship placement and hit/miss indications */
+  
