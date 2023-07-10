@@ -5,29 +5,25 @@ const player = require('./player');
 const playerBoard = document.querySelector('.player-board');
 const opponentBoard = document.querySelector('.opponent-board');
 
-function makegrid(gridElement) {
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      const cell = document.createElement('div');
-      cell.classList.add('cell');
-      gridElement.appendChild(cell);
-    }
-  }
-}
+const board1 = new GameBoard(10, 10);
+  board1.createGameBoard();
 
-makegrid(playerBoard);
-makegrid(opponentBoard);
+  const board2 = new GameBoard(10, 10);
+  board2.createGameBoard();
+
+board1.createdom(playerBoard)
+board2.createdom(opponentBoard)
+
+
+
+
 
 
 function gameloop() {
   const p1 = new player("yee");
   const bot = new player("alien");
 
-  const board1 = new GameBoard(10, 10);
-  board1.createGameBoard();
-
-  const board2 = new GameBoard(10, 10);
-  board2.createGameBoard();
+  
 
   const carrier1 = new Ship(5);
   const battleship1 = new Ship(4);
